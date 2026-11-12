@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Srikant Kumar | Personal Website</title>
+    <meta name="description" content="Srikant Kumar's personal portfolio, web development notes, skills, and projects.">
+    <style>
+        :root {
+            --bg: #f4f8ff;
+            --panel: #ffffff;
+            --panel-alt: #eef4ff;
+            --primary: #1d4ed8;
+            --primary-dark: #163ea8;
+            --accent: #7c3aed;
+            --text: #122033;
+            --muted: #5d718a;
+            --border: rgba(18, 32, 51, 0.08);
+            --shadow: 0 20px 50px rgba(29, 78, 216, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(180deg, #edf5ff 0%, #f9fbff 48%, #f4f8ff 100%);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1200px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(12px);
+            background: rgba(244, 248, 255, 0.82);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 72px;
+        }
+
+        .brand {
+            font-size: clamp(1.2rem, 2vw, 1.6rem);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .brand span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            color: var(--muted);
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .cta {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: #fff;
+            padding: 12px 22px;
+            border-radius: 999px;
+            font-weight: 700;
+            box-shadow: 0 14px 30px rgba(124, 58, 237, 0.25);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 18px 34px rgba(124, 58, 237, 0.3);
+        }
+
+        .hero {
+            padding: 72px 0 40px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 36px;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(29, 78, 216, 0.1);
+            color: var(--primary-dark);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: clamp(2.6rem, 5vw, 4.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.05em;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        .lead {
+            margin: 22px 0 28px;
+            max-width: 620px;
+            color: var(--muted);
+            font-size: 1.12rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+        }
+
+        .secondary {
+            display: inline-block;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 12px 22px;
+            background: rgba(255, 255, 255, 0.7);
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .stat {
+            min-width: 140px;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.7rem;
+            color: var(--primary-dark);
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .image-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            padding: 18px;
+        }
+
+        .image-card img {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 18px 35px rgba(34, 53, 84, 0.12);
+        }
+
+        .floating-badge {
+            position: absolute;
+            right: -18px;
+            bottom: 26px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            padding: 16px 18px;
+            min-width: 180px;
+        }
+
+        .floating-badge strong {
+            display: block;
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+        }
+
+        .floating-badge span {
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        .section {
+            padding: 42px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            letter-spacing: -0.05em;
+            margin: 0 0 12px;
+        }
+
+        .section-header p {
+            margin: 0 auto;
+            max-width: 760px;
+            color: var(--muted);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card,
+        .project-card,
+        .about-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: 0 12px 28px rgba(18, 32, 51, 0.04);
+            padding: 28px 24px;
+        }
+
+        .feature-card h3,
+        .project-card h3,
+        .about-card h3 {
+            margin: 0 0 12px;
+            font-size: 1.3rem;
+        }
+
+        .feature-card p,
+        .project-card p,
+        .about-card p,
+        .project-meta,
+        .mini-list {
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 18px;
+            background: linear-gradient(135deg, rgba(29, 78, 216, 0.12), rgba(124, 58, 237, 0.12));
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .about-wrap {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 24px;
+        }
+
+        .mini-list {
+            display: grid;
+            gap: 10px;
+            padding-left: 18px;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .project-meta {
+            font-size: 0.85rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+            font-weight: 700;
+        }
+
+        .footer {
+            padding: 28px 0 48px;
+            text-align: center;
+            color: var(--muted);
+        }
+
+        @media (max-width: 840px) {
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+                padding: 16px 0;
+            }
+
+            .hero-grid,
+            .about-wrap,
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 40px;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 14px 20px;
+            }
+
+            .floating-badge {
+                position: static;
+                margin-top: 20px;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav">
+            <a href="#top" class="brand"><span>Srikant</span> Kumar</a>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="./notes.html">Notes</a>
+                <a href="#contact" class="cta">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <div class="eyebrow">Digital Creator</div>
+                    <h1>Building <span class="highlight">modern ideas</span> with passion.</h1>
+                    <p class="lead">
+                        Hello! I’m Srikant Kumar, a creative web enthusiast who enjoys turning ideas into responsive, polished digital experiences.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="cta">View My Work</a>
+                        <a href="#about" class="secondary">Learn More</a>
+                    </div>
+                    <div class="stats" aria-label="Highlights">
+                        <div class="stat">
+                            <strong>2+</strong>
+                            <span>Years learning</span>
+                        </div>
+                        <div class="stat">
+                            <strong>10+</strong>
+                            <span>Creative ideas</span>
+                        </div>
+                        <div class="stat">
+                            <strong>100%</strong>
+                            <span>Curious mindset</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="image-card">
+                        <img src="./banner.png" alt="Srikant Kumar Website Banner">
+                    </div>
+                    <div class="floating-badge">
+                        <strong>Design + Code</strong>
+                        <span>Responsive and clean web experiences</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>What I enjoy</h2>
+                    <p>I like combining design thinking, creativity, and simple coding to make user-friendly experiences.</p>
+                </div>
+                <div class="card-grid">
+                    <article class="feature-card">
+                        <div class="icon">01</div>
+                        <h3>Web Design</h3>
+                        <p>Crafting visually appealing layouts that are easy to read, navigate, and enjoy across devices.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="icon">02</div>
+                        <h3>Frontend Development</h3>
+                        <p>Turning designs into responsive interfaces using clean HTML, CSS, and modern web practices.</p>
+                    </article>
+                    <article class="feature-card">
+                        <div class="icon">03</div>
+                        <h3>Creative Thinking</h3>
+                        <p>Solving problems with thoughtful design choices, strong structure, and an eye for detail.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="container about-wrap">
+                <article class="about-card">
+                    <h3>About Me</h3>
+                    <p>
+                        I am a learner and builder who enjoys exploring the world of web development. My goal is to create digital experiences that feel clean, inspiring, and useful to real people.
+                    </p>
+                    <ul class="mini-list">
+                        <li>Focused on meaningful design and simple user experiences</li>
+                        <li>Interested in coding, learning, and continuous improvement</li>
+                        <li>Always open to new ideas and creative opportunities</li>
+                    </ul>
+                </article>
+
+                <article class="about-card">
+                    <h3>Core Strengths</h3>
+                    <ul class="mini-list">
+                        <li>Creative problem-solving</li>
+                        <li>Responsive UI layout</li>
+                        <li>Attention to visual detail</li>
+                        <li>Fast learner mindset</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Featured Ideas</h2>
+                    <p>These examples represent the kind of polished, thoughtful work I aim to create.</p>
+                </div>
+                <div class="card-grid">
+                    <article class="project-card">
+                        <div class="project-meta">Portfolio</div>
+                        <h3>Personal Brand Website</h3>
+                        <p>A clean, elegant portfolio concept designed to highlight profile, services, and personal projects.</p>
+                    </article>
+                    <article class="project-card">
+                        <div class="project-meta">Landing Page</div>
+                        <h3>Responsive Business Page</h3>
+                        <p>A conversion-focused landing page layout with clear messaging, CTA buttons, and easy navigation.</p>
+                    </article>
+                    <article class="project-card">
+                        <div class="project-meta">Design System</div>
+                        <h3>Creative Digital Experience</h3>
+                        <p>A concept built around modern styling, attractive spacing, and a strong visual hierarchy.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <p>Let’s build something great together — <a href="mailto:srikantk2004@gmail.com" class="highlight">srikantk2004@gmail.com</a> | <a href="tel:+919135832325" class="highlight">+91 91358 32325</a></p>
+        </div>
+    </footer>
+</body>
+</html>
